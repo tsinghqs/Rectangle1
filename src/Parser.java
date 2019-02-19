@@ -53,7 +53,11 @@ public class Parser {
                     System.out.println("Rectangle accepted:(" + rec.getName() + ", " +
                     rec.getX() + ", " + rec.getY() + ", " + rec.getWidth() + ", " + rec.getHeight()+ ")");
                     ArrayList<Rectangle> ans = parseBoy.Search(parseBoy.getRootNode(), rec.getName());
-                    System.out.println(ans);
+                    for (int i = 0; i < ans.size(); i++)
+                    {
+                        System.out.println(ans);
+                    }
+                    
                 }
                 else
                 {

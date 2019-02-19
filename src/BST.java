@@ -235,6 +235,11 @@ public class BST<T extends Comparable<? super T>> {
         if (compare == null || (compare.getElement().getName().equals(name)))
         {
             ans.add(compare.getElement());
+            while (compare.getRightNode() != null && compare.getRightNode().getElement().getName().equals(name))
+            {
+                compare = compare.getRightNode();
+                ans.add(compare.getElement());
+            }
             return ans;
         }
         
