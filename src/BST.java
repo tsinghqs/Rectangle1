@@ -231,8 +231,13 @@ public class BST<T extends Comparable<? super T>> {
         Iterator iter = new Iterator(rootNode);
         ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
         BSTNode<Rectangle> compare = (BSTNode<Rectangle>)iter.next();
-
-        if (compare == null || (compare.getElement().getName().equals(name)))
+        
+        if (compare == null)
+        {
+            return ans;
+        }
+        
+        if (compare.getElement().getName().equals(name))
         {
             ans.add(compare.getElement());
             while (compare.getRightNode() != null && compare.getRightNode().getElement().getName().equals(name))
