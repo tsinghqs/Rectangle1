@@ -44,14 +44,19 @@ public class Parser {
                 System.out.println(commands[1]);
                 System.out.println(commands[2]);
                 rec.setXpos(Integer.parseInt(commands[2]));
-                rec.setYpos(Integer.parseInt(commands[3]));
+                rec.setY(Integer.parseInt(commands[3]));
                 System.out.println(commands[3]);
                 rec.setWidth(Integer.parseInt(commands[4]));
                 System.out.println(commands[4]);
-                rec.setLength(Integer.parseInt(commands[5]));
+                rec.setHeight(Integer.parseInt(commands[5]));
                 System.out.println(commands[5]);
                 parseBoy.insert(rec);
 
+            }
+            else if (commands[0].equals("dump"))
+            {
+                String dump = parseBoy.dump();
+                System.out.println(dump);
             }
             
         }
