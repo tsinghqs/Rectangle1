@@ -226,7 +226,7 @@ public class BST<T extends Comparable<? super T>> {
     }
     
     @SuppressWarnings("unchecked")
-    public ArrayList<Rectangle> Search(BSTNode<T> rootNode, String name)
+    public ArrayList<Rectangle> search(BSTNode<T> rootNode, String name)
     {
         Iterator iter = new Iterator(rootNode);
         ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
@@ -245,14 +245,25 @@ public class BST<T extends Comparable<? super T>> {
         
         if (compare.getElement().getName().compareTo(name) < 0)
         {
-            return Search((BSTNode<T>)compare.getRightNode(), name);
+            return search((BSTNode<T>)compare.getRightNode(), name);
         }
         
-        return Search((BSTNode<T>)compare.getLeftNode(), name);
+        return search((BSTNode<T>)compare.getLeftNode(), name);
         
     }
     
-    public void remove(int x, int y, int w, int h)
+    public boolean remove(String name)
+    {
+        ArrayList<Rectangle> sameNames = search(rootNode, name);
+        if (sameNames.size() == 0)
+        {
+            return false;
+        }
+        remove((T)sameNames.get(0));
+        return true;
+    }
+    
+    public boolean remove(int x, int y, int w, int h)
     {
         Iterator iter = new Iterator(rootNode);
         while (iter.hasNext())
@@ -266,8 +277,10 @@ public class BST<T extends Comparable<? super T>> {
             if (sameX && sameY && sameW && sameH)
             {
                 remove((T)currRectangle);
+                return true;
             }
         }
+        return false;
     }
     
     private class Iterator{
