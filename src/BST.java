@@ -18,6 +18,16 @@ public class BST<T extends Comparable<? super T>> {
         rootNode = removeHelper(targetElem, rootNode);
     }
     
+    public int size()
+    {
+        if (rootNode == null)
+        {
+            return 0;
+        }
+        
+        return sizeHelper(rootNode);
+    }
+    
     private BSTNode<T> insertHelper(T newElem, BSTNode<T> node)
     {
         if (node == null)
@@ -107,5 +117,34 @@ public class BST<T extends Comparable<? super T>> {
         {
             return getMin(node.getLeftNode());
         }
+    }
+    
+    /**
+     * Calculate the size of this binary tree.
+     * @return The size of this tree.
+     */
+    private int sizeHelper(BSTNode<T> node)
+    {
+        int leftNum = 0;
+        int rightNum = 0;
+        
+        if (node.getLeftNode() != null)
+        {
+            leftNum = sizeHelper(node.getLeftNode());
+        }
+        
+        if (node.getRightNode() != null)
+        {
+            rightNum = sizeHelper(node.getRightNode());
+        }
+        
+        return 1 + leftNum + rightNum;
+        
+        
+        //Base case: current node has 0 children
+        
+        //Recursive Case 1: current node has 1 child on the left
+        //Recursive Case 2: current node has 1 child on the right
+        //Recursive Case 3: current node has 2 children
     }
 }
