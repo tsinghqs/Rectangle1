@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class BST<T extends Comparable<? super T>> {
@@ -219,6 +220,28 @@ public class BST<T extends Comparable<? super T>> {
         //Recursive Case 3: current node has 2 children
     }
     
+    public ArrayList<Rectangle> Search(String name)
+    {
+        Iterator iter = new Iterator(rootNode);
+        //System.out.println(iter.next());
+        ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
+        while (iter.hasNext())
+        {
+            @SuppressWarnings("unchecked")
+            BSTNode<Rectangle> compare = (BSTNode<Rectangle>)iter.next();
+            System.out.println(compare);
+            if (compare.getElement().getName().equals(name))
+            {
+                ans.add(compare.getElement());
+            }
+        }
+        
+        
+        return ans;
+       
+        
+    }
+    
     private class Iterator{
         
         private BSTNode<T> next;
@@ -235,6 +258,7 @@ public class BST<T extends Comparable<? super T>> {
             {
                 return;
             }
+            stack.push(next);
             while (next.getLeftNode() != null)
             {
                 stack.push(next.getLeftNode());

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
@@ -148,6 +149,25 @@ public class BSTTarun<T extends Comparable<? super T>> {
         //Recursive Case 1: current node has 1 child on the left
         //Recursive Case 2: current node has 1 child on the right
         //Recursive Case 3: current node has 2 children
+    }
+    
+    public ArrayList<Rectangle> Search(String name)
+    {
+        Iterator iter = new Iterator(rootNode);
+        ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
+        while (iter.hasNext())
+        {
+            BSTNode<Rectangle> compare = (BSTNode<Rectangle>)iter.next();
+            if (compare.getElement().getName().equals(name))
+            {
+                ans.add(compare.getElement());
+            }
+        }
+        
+        
+        return ans;
+       
+        
     }
     
     private class Iterator{
