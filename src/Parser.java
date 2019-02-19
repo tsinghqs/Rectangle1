@@ -69,6 +69,10 @@ public class Parser {
                 String dump = parseBoy.dump();
                 System.out.println(dump);
             }
+            else if (commands[0].equals("remove") && commands.length > 1)
+            {
+                System.out.print("Don't");
+            }
             
         }
         
