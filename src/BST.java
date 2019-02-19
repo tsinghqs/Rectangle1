@@ -22,34 +22,48 @@ public class BST<T extends Comparable<? super T>> {
     public String dump()
     {
         StringBuilder dump = new StringBuilder();
+        dump.append("BST dump:\n");
         dump.append(treeDump(rootNode));
         dump.append("BST size is: ");
         dump.append(size());
         return dump.toString();
     }
     
+    // precondition: node exists in BST (not null)
     private String treeDump(BSTNode<T> node)
     {
         StringBuilder dump = new StringBuilder();
         int nodeDepth = findDepth(node);
         dump.append("Node has depth " + nodeDepth + ", Value ");
-        dump.append(node.toString());
-        dump.append("\n");
-        if (node.getLeftNode() != null)
+        
+        if (node == null)
         {
-            dump.append(treeDump(node.getLeftNode()));
+            dump.append("(null)\n");
         }
         
-        if (node.getRightNode() != null)
+        else
         {
-            dump.append(treeDump(node.getRightNode()));
+            dump.append(node.toString());
+            dump.append("\n");
+            if (node.getLeftNode() != null)
+            {
+                dump.append(treeDump(node.getLeftNode()));
+            }
+        
+            if (node.getRightNode() != null)
+            {
+                dump.append(treeDump(node.getRightNode()));
+            }
         }
         return dump.toString();
     }
     
-    //precondition: node exists in BST
     private int findDepth(BSTNode<T> targetNode)
     {
+        if (targetNode == null)
+        {
+            return 0;
+        }
         return findDepth(rootNode, targetNode);
     }
     
