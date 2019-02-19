@@ -1,3 +1,4 @@
+import java.util.Stack;
 
 public class BST<T extends Comparable<? super T>> {
     
@@ -202,5 +203,49 @@ public class BST<T extends Comparable<? super T>> {
         //Recursive Case 1: current node has 1 child on the left
         //Recursive Case 2: current node has 1 child on the right
         //Recursive Case 3: current node has 2 children
+    }
+    
+    private class Iterator{
+        
+        private BSTNode<T> next;
+        private Stack<BSTNode<T>> stack = new Stack<BSTNode<T>>();
+
+        
+        public Iterator(BSTNode<T> root) {
+            if (root == null)
+            {
+                return;
+            }
+            next = root;
+            if (next == null)
+            {
+                return;
+            }
+            while (next.getLeftNode() != null)
+            {
+                stack.push(next.getLeftNode());
+                next = next.getLeftNode();
+            }
+        }
+        
+        public boolean hasNext() {
+            return !stack.isEmpty();
+        }
+        
+        public BSTNode<T> next() {
+            BSTNode<T> rst = stack.pop();
+            
+            if (rst.getRightNode() != null) {
+                BSTNode<T> node = rst.getRightNode();
+                stack.push(node);
+                while (node.getLeftNode() != null) {
+                    stack.push(node.getLeftNode());
+                    node = node.getLeftNode();
+                }            
+            }
+            return rst;
+            
+            
+        }
     }
 }
