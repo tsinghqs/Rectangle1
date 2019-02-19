@@ -21,7 +21,7 @@ public class Rectangle1 {
     public static void main(String[] args) throws FileNotFoundException
     {
        //read file as an argument
-       String fileName = "SyntaxTest.txt";
+       String fileName = args[0];
        File file = new File(fileName);
        Scanner sc = new Scanner(file);
        
