@@ -12,23 +12,39 @@ public class Parser {
     
     public void parseString()
     {
-        String[] commands = input.split(" ");
-        if (commands[0].equals("insert"))
+        String[] commands = input.split("\\s+");
+        for (int i = 0; i < commands.length; i++)
         {
-            Rectangle rec = new Rectangle();
-            rec.setName(commands[1]);
-            System.out.println(commands[1]);
-            rec.setXpos(Integer.parseInt(commands[2]));
-            System.out.println(commands[2]);
-            rec.setYpos(Integer.parseInt(commands[3]));
-            System.out.println(commands[3]);
-            rec.setWidth(Integer.parseInt(commands[4]));
-            System.out.println(commands[4]);
-            rec.setLength(Integer.parseInt(commands[5]));
-            System.out.println(commands[5]);
-            parseBoy.insert(rec);
-
+            System.out.println(commands[i]);
         }
+        /**
+        if (commands.length > 0)
+        {
+            
+            System.out.println(commands[0]);
+            if (commands[0].equals("insert"))
+            {
+                Rectangle rec = new Rectangle();
+                rec.setName(commands[1]);
+                System.out.println(commands[1]);
+                System.out.println(commands[2]);
+                rec.setXpos(Integer.parseInt(commands[2]));
+                rec.setYpos(Integer.parseInt(commands[3]));
+                System.out.println(commands[3]);
+                rec.setWidth(Integer.parseInt(commands[4]));
+                System.out.println(commands[4]);
+                rec.setLength(Integer.parseInt(commands[5]));
+                System.out.println(commands[5]);
+                parseBoy.insert(rec);
+
+            }
+            else if (commands[0].equals("remove"))
+            {
+                
+            }
+        }**/
+        
+        
     }
     
     
