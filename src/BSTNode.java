@@ -42,6 +42,7 @@ public class BSTNode<T> {
         rightNode = right;
     }
     
+    
     public String toString()
     {
         return element.toString();
