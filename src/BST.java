@@ -10,25 +10,79 @@ public class BST<T extends Comparable<? super T>> {
     
     public void insert(T newElem)
     {
-        rootNode = insertHelper(newElem, rootNode);
+        rootNode = insert(newElem, rootNode);
     }
     
     public void remove(T targetElem)
     {
-        rootNode = removeHelper(targetElem, rootNode);
+        rootNode = remove(targetElem, rootNode);
     }
     
-    public int size()
+    public String dump()
+    {
+        StringBuilder dump = new StringBuilder();
+        dump.append(treeDump(rootNode));
+        dump.append("BST size is: ");
+        dump.append(size());
+        return dump.toString();
+    }
+    
+    private String treeDump(BSTNode<T> node)
+    {
+        StringBuilder dump = new StringBuilder();
+        int nodeDepth = findDepth(node);
+        dump.append("Node has depth " + nodeDepth + ", Value ");
+        dump.append(node.toString());
+        dump.append("\n");
+        if (node.getLeftNode() != null)
+        {
+            dump.append(treeDump(node.getLeftNode()));
+        }
+        
+        if (node.getRightNode() != null)
+        {
+            dump.append(treeDump(node.getRightNode()));
+        }
+        return dump.toString();
+    }
+    
+    //precondition: node exists in BST
+    private int findDepth(BSTNode<T> targetNode)
+    {
+        return findDepth(rootNode, targetNode);
+    }
+    
+    // helper method for findDepth
+    private int findDepth(BSTNode<T> currNode, BSTNode<T> targetNode)
+    {
+        if (currNode.equals(targetNode))
+        {
+            return 0;
+        }
+        
+        if (targetNode.getElement().compareTo(currNode.getElement()) < 0)
+        {
+            return 1 + findDepth(currNode.getLeftNode(), targetNode);
+        }
+        
+        else
+        {
+            return 1 + findDepth(currNode.getRightNode(), targetNode); 
+        }
+    }
+    
+    private int size()
     {
         if (rootNode == null)
         {
             return 0;
         }
         
-        return sizeHelper(rootNode);
+        return size(rootNode);
     }
     
-    private BSTNode<T> insertHelper(T newElem, BSTNode<T> node)
+    // helper method for insert
+    private BSTNode<T> insert(T newElem, BSTNode<T> node)
     {
         if (node == null)
         {
@@ -37,19 +91,20 @@ public class BST<T extends Comparable<? super T>> {
         
         else if (newElem.compareTo(node.getElement()) < 0)
         {
-            node.setLeftNode(insertHelper(newElem, node.getLeftNode()));
+            node.setLeftNode(insert(newElem, node.getLeftNode()));
         }
         
         // nodes with greater than or equal to toString() values are inserted to the right 
         else
         {
-            node.setRightNode(insertHelper(newElem, node.getRightNode()));
+            node.setRightNode(insert(newElem, node.getRightNode()));
         }
         
         return node;
     }
     
-    private BSTNode<T> removeHelper(T targetElem, BSTNode<T> node)
+    // helper method for remove
+    private BSTNode<T> remove(T targetElem, BSTNode<T> node)
     {
         // This local variable will contain the new root of the subtree,
         // if the root needs to change.
@@ -64,12 +119,12 @@ public class BST<T extends Comparable<? super T>> {
         // if value should be to the left of the root
         if (targetElem.compareTo(node.getElement()) < 0)
         {
-            node.setLeftNode(removeHelper(targetElem, node.getLeftNode()));
+            node.setLeftNode(remove(targetElem, node.getLeftNode()));
         }
         // if value should be to the right of the root
         else if (targetElem.compareTo(node.getElement()) > 0)
         {
-            node.setRightNode(removeHelper(targetElem, node.getRightNode()));
+            node.setRightNode(remove(targetElem, node.getRightNode()));
         }
         // If value is on the current node
         else
@@ -80,7 +135,7 @@ public class BST<T extends Comparable<? super T>> {
                 BSTNode<T> leftNode = node.getLeftNode();
                 BSTNode<T> leftMin = this.getMin(leftNode);
                 node.setElement(leftMin.getElement());
-                BSTNode<T> removed = removeHelper(leftMin.getElement(), leftMin);
+                BSTNode<T> removed = remove(leftMin.getElement(), leftMin);
                 node.setLeftNode(removed);
 
             }
@@ -123,19 +178,20 @@ public class BST<T extends Comparable<? super T>> {
      * Calculate the size of this binary tree.
      * @return The size of this tree.
      */
-    private int sizeHelper(BSTNode<T> node)
+    // helper method for size
+    private int size(BSTNode<T> node)
     {
         int leftNum = 0;
         int rightNum = 0;
         
         if (node.getLeftNode() != null)
         {
-            leftNum = sizeHelper(node.getLeftNode());
+            leftNum = size(node.getLeftNode());
         }
         
         if (node.getRightNode() != null)
         {
-            rightNum = sizeHelper(node.getRightNode());
+            rightNum = size(node.getRightNode());
         }
         
         return 1 + leftNum + rightNum;
