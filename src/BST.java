@@ -250,7 +250,16 @@ public class BST<T extends Comparable<? super T>> {
         
         if (compare.getElement().getName().compareTo(name) < 0)
         {
+            if (compare.getRightNode() == null)
+            {
+                return ans;
+            }
             return search((BSTNode<T>)compare.getRightNode(), name);
+        }
+        
+        if (compare.getLeftNode() == null)
+        {
+            return ans;
         }
         
         return search((BSTNode<T>)compare.getLeftNode(), name);
