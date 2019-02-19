@@ -29,7 +29,6 @@ public class Rectangle1 {
        while (sc.hasNextLine())
        {
            String line = sc.nextLine();
-           System.out.println(line);
            Parser parse = new Parser(recBST, line);
            parse.parseString();
         
