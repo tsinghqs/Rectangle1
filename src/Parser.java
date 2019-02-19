@@ -1,23 +1,38 @@
-
+/**
+ * Parser is a class designed to parse command file
+ * @author tsingh
+ *
+ */
 public class Parser {
     
+    /**
+     * fields for parser
+     */
     private BST<Rectangle> parseBoy;
     private String input;
     
+    /**
+     * Constructor for parser
+     * @param name
+     * @param terms
+     */
     public Parser(BST<Rectangle> name, String terms)
     {
         parseBoy = name;
         input = terms;
     }
     
+    /**
+     * Method to parse the string
+     */
     public void parseString()
     {
-        String[] commands = input.split("\\s+");
+        String[] commands = input.trim().split("\\s+");
         for (int i = 0; i < commands.length; i++)
         {
             System.out.println(commands[i]);
         }
-        /**
+        
         if (commands.length > 0)
         {
             
@@ -38,11 +53,8 @@ public class Parser {
                 parseBoy.insert(rec);
 
             }
-            else if (commands[0].equals("remove"))
-            {
-                
-            }
-        }**/
+            
+        }
         
         
     }
