@@ -51,11 +51,14 @@ public class Parser {
                 rec.setHeight(Integer.parseInt(commands[5]));
                 System.out.println(commands[5]);
                 parseBoy.insert(rec);
+                System.out.println("Rectangle accepted:(" + rec.getName() + ", " +
+                rec.getX() + ", " + rec.getY() + ", " + rec.getWidth() + ", " + rec.getHeight()+ ")");
 
             }
             else if (commands[0].equals("dump"))
             {
                 String dump = parseBoy.dump();
+                System.out.println("BST Dump:");
                 System.out.println(dump);
             }
             
