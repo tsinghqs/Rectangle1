@@ -220,25 +220,25 @@ public class BST<T extends Comparable<? super T>> {
         //Recursive Case 3: current node has 2 children
     }
     
-    public ArrayList<Rectangle> search(String name)
+    @SuppressWarnings("unchecked")
+    public ArrayList<Rectangle> Search(BSTNode<T> rootNode, String name)
     {
         Iterator iter = new Iterator(rootNode);
-        //System.out.println(iter.next());
         ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
-        while (iter.hasNext())
+        BSTNode<Rectangle> compare = (BSTNode<Rectangle>)iter.next();
+
+        if (rootNode == null || (compare.getElement().getName().equals(name)))
         {
-            @SuppressWarnings("unchecked")
-            BSTNode<Rectangle> compare = (BSTNode<Rectangle>)iter.next();
-            System.out.println(compare);
-            if (compare.getElement().getName().equals(name))
-            {
-                ans.add(compare.getElement());
-            }
+            ans.add(compare.getElement());
+            return ans;
         }
         
+        if (compare.getElement().getName().compareTo(name) > 0)
+        {
+            return Search((BSTNode<T>)compare.getRightNode(), name);
+        }
         
-        return ans;
-       
+        return Search((BSTNode<T>)compare.getLeftNode(), name);
         
     }
     
