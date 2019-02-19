@@ -2,26 +2,26 @@
 public class Rectangle implements Comparable<Rectangle> {
 
     private String name;
-    private int xpos;
-    private int ypos;
-    private int width;
-    private int length;
+    private int x;
+    private int y;
+    private int w;
+    private int h;
     
     /**
      * Constructor for the rectangle class
      * @param name
-     * @param xpos
-     * @param ypos
-     * @param width
-     * @param length
+     * @param x
+     * @param y
+     * @param w
+     * @param h
      */
-    public Rectangle(String name, int xpos, int ypos, int width, int length)
+    public Rectangle(String name, int x, int y, int w, int h)
     {
         this.name = name;
-        this.xpos = xpos;
-        this.ypos = ypos;
-        this.width = width;
-        this.length = length;
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
     }
     
     public Rectangle() {
@@ -32,57 +32,56 @@ public class Rectangle implements Comparable<Rectangle> {
      * @return the width
      */
     public int getWidth() {
-        return width;
+        return w;
     }
 
     /**
      * @param width the width to set
      */
     public void setWidth(int width) {
-        this.width = width;
+        this.w = width;
     }
 
     /**
-     * @return the length
+     * @return the height
      */
-    public int getLength() {
-        return length;
-        //return length
+    public int getHeight() {
+        return h;
     }
 
     /**
-     * @param length the length to set
+     * @param height the height to set
      */
-    public void setLength(int length) {
-        this.length = length;
+    public void setHeight(int height) {
+        this.h = height;
     }
 
     /**
-     * @return the ypos
+     * @return the y coordinate
      */
-    public int getYpos() {
-        return ypos;
+    public int getY() {
+        return y;
     }
 
     /**
-     * @param ypos the ypos to set
+     * @param yPos the value to set y
      */
-    public void setYpos(int ypos) {
-        this.ypos = ypos;
+    public void setY(int yPos) {
+        this.y = yPos;
     }
 
     /**
-     * @return the xpos
+     * @return the x coordinate
      */
-    public int getXpos() {
-        return xpos;
+    public int getX() {
+        return x;
     }
 
     /**
-     * @param xpos the xpos to set
+     * @param xPos the value to set x
      */
-    public void setXpos(int xpos) {
-        this.xpos = xpos;
+    public void setXpos(int xPos) {
+        this.x = xPos;
     }
 
     /**
@@ -101,12 +100,25 @@ public class Rectangle implements Comparable<Rectangle> {
     
     public String toString()
     {
-        return name;
+        StringBuilder sb = new StringBuilder();
+        sb.append("(");
+        sb.append(this.getName());
+        sb.append(", ");
+        sb.append(this.getX());
+        sb.append(", ");
+        sb.append(this.getY());
+        sb.append(", ");
+        sb.append(this.getWidth());
+        sb.append(", ");
+        sb.append(this.getHeight());
+        sb.append(")");
+        
+        return sb.toString();
     }
 
     @Override
     public int compareTo(Rectangle r) {
-        return this.toString().compareTo(r.toString());
+        return this.getName().compareTo(r.getName());
     }
     
     
