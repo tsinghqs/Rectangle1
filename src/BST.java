@@ -3,11 +3,16 @@ import java.util.Stack;
 
 public class BST<T extends Comparable<? super T>> {
     
-    private BSTNode<T> rootNode;
+    BSTNode<T> rootNode;
     
     public BST()
     {
         rootNode = null;
+    }
+    
+    public BSTNode<T> getRootNode()
+    {
+        return rootNode;
     }
     
     public void insert(T newElem)
@@ -227,13 +232,13 @@ public class BST<T extends Comparable<? super T>> {
         ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
         BSTNode<Rectangle> compare = (BSTNode<Rectangle>)iter.next();
 
-        if (rootNode == null || (compare.getElement().getName().equals(name)))
+        if (compare == null || (compare.getElement().getName().equals(name)))
         {
             ans.add(compare.getElement());
             return ans;
         }
         
-        if (compare.getElement().getName().compareTo(name) > 0)
+        if (compare.getElement().getName().compareTo(name) < 0)
         {
             return Search((BSTNode<T>)compare.getRightNode(), name);
         }
