@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Parser is a class designed to parse command file
  * @author tsingh
@@ -50,6 +52,8 @@ public class Parser {
                     parseBoy.insert(rec);
                     System.out.println("Rectangle accepted:(" + rec.getName() + ", " +
                     rec.getX() + ", " + rec.getY() + ", " + rec.getWidth() + ", " + rec.getHeight()+ ")");
+                    ArrayList<Rectangle> ans = parseBoy.Search(rec.getName());
+                    System.out.println(ans);
                 }
                 else
                 {
