@@ -1,6 +1,6 @@
 import java.io.File;
+
 import java.io.FileNotFoundException;
-import java.text.ParseException;
 import java.util.Scanner;
 
 
@@ -26,12 +26,13 @@ public class Rectangle1 {
        Scanner sc = new Scanner(file);
        
        //initialize BST
-       BST<Rectangle> recBST = new BST<Rectangle>();
+       //BST<Rectangle> recBST = new BST<Rectangle>();
        while (sc.hasNextLine())
        {
            String line = sc.nextLine();
-           Parser parse = new Parser(recBST, line);
-           parse.parseString();
+           System.out.println(line);
+           //Parser parse = new Parser(recBST, line);
+           //parse.parseString();
         
        }
        sc.close();
