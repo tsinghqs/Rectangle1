@@ -220,7 +220,7 @@ public class BST<T extends Comparable<? super T>> {
         //Recursive Case 3: current node has 2 children
     }
     
-    public ArrayList<Rectangle> Search(String name)
+    public ArrayList<Rectangle> search(String name)
     {
         Iterator iter = new Iterator(rootNode);
         //System.out.println(iter.next());
@@ -240,6 +240,24 @@ public class BST<T extends Comparable<? super T>> {
         return ans;
        
         
+    }
+    
+    public void remove(int x, int y, int w, int h)
+    {
+        Iterator iter = new Iterator(rootNode);
+        while (iter.hasNext())
+        {
+            BSTNode<Rectangle> currNode = (BSTNode<Rectangle>) iter.next();
+            Rectangle currRectangle = currNode.getElement();
+            boolean sameX = (currRectangle.getX() == x);
+            boolean sameY = (currRectangle.getY() == y);
+            boolean sameW = (currRectangle.getWidth() == w);
+            boolean sameH = (currRectangle.getHeight() == h);
+            if (sameX && sameY && sameW && sameH)
+            {
+                remove((T)currRectangle);
+            }
+        }
     }
     
     private class Iterator{
