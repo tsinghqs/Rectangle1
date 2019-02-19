@@ -28,37 +28,37 @@ public class Parser {
     public void parseString()
     {
         String[] commands = input.trim().split("\\s+");
-        for (int i = 0; i < commands.length; i++)
-        {
-            System.out.println(commands[i]);
-        }
-        
+       
         if (commands.length > 0)
         {
             
             System.out.println(commands[0]);
             if (commands[0].equals("insert"))
             {
+                //Make sure height and width are greater than 0
                 Rectangle rec = new Rectangle();
                 rec.setName(commands[1]);
-                System.out.println(commands[1]);
-                System.out.println(commands[2]);
                 rec.setXpos(Integer.parseInt(commands[2]));
                 rec.setY(Integer.parseInt(commands[3]));
-                System.out.println(commands[3]);
                 rec.setWidth(Integer.parseInt(commands[4]));
-                System.out.println(commands[4]);
                 rec.setHeight(Integer.parseInt(commands[5]));
-                System.out.println(commands[5]);
-                parseBoy.insert(rec);
-                System.out.println("Rectangle accepted:(" + rec.getName() + ", " +
-                rec.getX() + ", " + rec.getY() + ", " + rec.getWidth() + ", " + rec.getHeight()+ ")");
-
+                boolean heightFits = (rec.getY() + rec.getHeight()) < 1024;
+                boolean widthFits = (rec.getX() + rec.getWidth()) < 1024;
+                if (rec.getX() >= 0 && rec.getY() >= 0 && rec.getHeight() > 0 && rec.getWidth() > 0 && heightFits && widthFits)
+                {
+                    
+                    parseBoy.insert(rec);
+                    System.out.println("Rectangle accepted:(" + rec.getName() + ", " +
+                    rec.getX() + ", " + rec.getY() + ", " + rec.getWidth() + ", " + rec.getHeight()+ ")");
+                }
+                else
+                {
+                    System.out.println("REJECTED");
+                }
             }
             else if (commands[0].equals("dump"))
             {
                 String dump = parseBoy.dump();
-                System.out.println("BST Dump:");
                 System.out.println(dump);
             }
             
