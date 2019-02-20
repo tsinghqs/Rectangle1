@@ -15,8 +15,8 @@ public class Parser {
     
     /**
      * Constructor for parser
-     * @param name
-     * @param terms
+     * @param name name of BST
+     * @param terms string commands
      */
     public Parser(BST<Rectangle> name, String terms)
     {
