@@ -60,13 +60,13 @@ public class Parser {
                     System.out.println("REJECTED");
                 }
             }
-            /**else if (commands[0].equals("search")) {
+            else if (commands[0].equals("search")) {
                 ArrayList<Rectangle> ans = Rectangle.search(parseBoy, parseBoy.getRootNode(), commands[1]);
                 for (int i = 0; i < ans.size(); i++)
                 {
                     System.out.println(ans);
                 }
-            }**/
+            }
             else if (commands[0].equals("dump"))
             {
                 String dump = parseBoy.dump();

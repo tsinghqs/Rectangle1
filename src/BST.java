@@ -155,26 +155,33 @@ public class BST<T extends Comparable<? super T>> {
         // If value is on the current node
         else
         {
-            // If there are two children
-            if (node.getLeftNode() != null && node.getRightNode() != null)
-            {
-                BSTNode<T> leftNode = node.getLeftNode();
-                BSTNode<T> leftMin = this.getMin(leftNode);
-                node.setElement(leftMin.getElement());
-                BSTNode<T> removed = remove(leftMin.getElement(), leftMin);
-                node.setLeftNode(removed);
+            if (targetElem == node.getElement()) {
+                if (node.getLeftNode() != null && node.getRightNode() != null)
+                {
+                    BSTNode<T> leftNode = node.getLeftNode();
+                    BSTNode<T> leftMin = this.getMin(leftNode);
+                    node.setElement(leftMin.getElement());
+                    BSTNode<T> removed = remove(leftMin.getElement(), leftMin);
+                    node.setLeftNode(removed);
 
+                }
+                // If there is only one child on the left
+                else if (node.getLeftNode() != null)
+                {
+                    result = node.getLeftNode();
+                }
+                // If there is only one child on the right
+                else
+                {
+                    result = node.getRightNode();
+                }
             }
-            // If there is only one child on the left
-            else if (node.getLeftNode() != null)
-            {
-                result = node.getLeftNode();
-            }
-            // If there is only one child on the right
             else
             {
-                result = node.getRightNode();
+                node.setRightNode(remove(targetElem, node.getRightNode()));
             }
+            // If there are two children
+            
         }
         return result;
     }
