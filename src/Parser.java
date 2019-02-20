@@ -81,6 +81,11 @@ public class Parser {
             {
                 Rectangle.remove(parseBoy, commands[1]);
             }
+            else if (commands[0].equals("regionsearch"))
+            {
+                ArrayList<Rectangle> reg = Rectangle.regionsearch(parseBoy, Integer.parseInt(commands[1]), Integer.parseInt(commands[2]), Integer.parseInt(commands[3]),Integer.parseInt(commands[4]));
+                System.out.println(reg);
+            }
             
         }
         

@@ -107,7 +107,7 @@ public class Rectangle implements Comparable<Rectangle> {
         int secondXMax = x + w;
         boolean xIntersect = false;
         
-        if (firstXMin <= secondXMax && secondXMin <= firstXMax)
+        if (firstXMin < secondXMax && secondXMin < firstXMax)
         {
             xIntersect = true;
         }
@@ -118,7 +118,7 @@ public class Rectangle implements Comparable<Rectangle> {
         int secondYMax = y + h;
         boolean yIntersect = false;
         
-        if (firstYMin <= secondYMax && secondYMin <= firstYMax)
+        if (firstYMin < secondYMax && secondYMin < firstYMax)
         {
             yIntersect = true;
         }
