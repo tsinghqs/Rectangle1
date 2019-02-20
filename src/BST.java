@@ -4,15 +4,22 @@ import java.util.Stack;
 public class BST<T extends Comparable<? super T>> {
     
     BSTNode<T> rootNode;
+    Iterator iterator;
     
     public BST()
     {
         rootNode = null;
+        iterator = new Iterator(rootNode);
     }
     
     public BSTNode<T> getRootNode()
     {
         return rootNode;
+    }
+    
+    public Iterator getIterator()
+    {
+        return iterator;
     }
     
     public void insert(T newElem)
