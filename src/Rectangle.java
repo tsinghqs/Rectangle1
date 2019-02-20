@@ -99,6 +99,37 @@ public class Rectangle implements Comparable<Rectangle> {
         this.name = name;
     }
     
+    public boolean intersects(int x, int y, int w, int h)
+    {
+        int firstXMin = this.getX();
+        int firstXMax = this.getX() + this.getWidth();
+        int secondXMin = x;
+        int secondXMax = x + w;
+        boolean xIntersect = false;
+        
+        if (firstXMin <= secondXMax && secondXMin <= firstXMax)
+        {
+            xIntersect = true;
+        }
+        
+        int firstYMin = this.getY();
+        int firstYMax = this.getY() + this.getHeight();
+        int secondYMin = y;
+        int secondYMax = y + h;
+        boolean yIntersect = false;
+        
+        if (firstYMin <= secondYMax && secondYMin <= firstYMax)
+        {
+            yIntersect = true;
+        }
+        
+        if (xIntersect && yIntersect)
+        {
+            return true;
+        }
+        return false;
+    }
+    
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
@@ -146,7 +177,6 @@ public class Rectangle implements Comparable<Rectangle> {
             boolean sameH = (currRectangle.getHeight() == h);
             if (sameX && sameY && sameW && sameH)
             {
-                System.out.println(currRectangle.toString());
                 bst.remove(currRectangle);
                 return true;
             }
@@ -190,8 +220,23 @@ public class Rectangle implements Comparable<Rectangle> {
             return ans;
         }
         
-        return search(bst, compare.getLeftNode(), name);
-        
+        return search(bst, compare.getLeftNode(), name);    
+    }
+    
+    public static ArrayList<Rectangle> regionsearch(BST<Rectangle> bst, int x, int y, int w, int h)
+    {
+        Iterator<Rectangle> iter = new Iterator<Rectangle>(bst.getRootNode());
+        ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
+        while (iter.hasNext())
+        {
+            BSTNode<Rectangle> currNode = iter.next();
+            Rectangle currRectangle = currNode.getElement();
+            if (currRectangle.intersects(x, y, w, h))
+            {
+                ans.add(currRectangle);
+            }
+        }
+        return ans;
     }
 }
 
