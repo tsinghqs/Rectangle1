@@ -130,6 +130,37 @@ public class Rectangle implements Comparable<Rectangle> {
         return false;
     }
     
+    public static boolean intersects(Rectangle r1, Rectangle r2)
+    {
+        int firstXMin = r1.getX();
+        int firstXMax = r1.getX() + r1.getWidth();
+        int secondXMin = r2.getX();
+        int secondXMax = r2.getX() + r2.getWidth();
+        boolean xIntersect = false;
+        
+        if (firstXMin < secondXMax && secondXMin < firstXMax)
+        {
+            xIntersect = true;
+        }
+        
+        int firstYMin = r1.getY();
+        int firstYMax = r1.getY() + r1.getHeight();
+        int secondYMin = r2.getY();
+        int secondYMax = r2.getY() + r2.getHeight();
+        boolean yIntersect = false;
+        
+        if (firstYMin < secondYMax && secondYMin < firstYMax)
+        {
+            yIntersect = true;
+        }
+        
+        if (xIntersect && yIntersect)
+        {
+            return true;
+        }
+        return false;
+    }
+    
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
@@ -225,8 +256,12 @@ public class Rectangle implements Comparable<Rectangle> {
     
     public static ArrayList<Rectangle> regionsearch(BST<Rectangle> bst, int x, int y, int w, int h)
     {
-        Iterator<Rectangle> iter = new Iterator<Rectangle>(bst.getRootNode());
         ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
+        if (w < 0 && h < 0)
+        {
+            return ans;
+        }
+        Iterator<Rectangle> iter = new Iterator<Rectangle>(bst.getRootNode());
         while (iter.hasNext())
         {
             BSTNode<Rectangle> currNode = iter.next();
@@ -237,6 +272,52 @@ public class Rectangle implements Comparable<Rectangle> {
             }
         }
         return ans;
+    }
+    
+    public static ArrayList<ArrayList<Rectangle>> intersections(BST<Rectangle> bst)
+    {
+        ArrayList<ArrayList<Rectangle>> allPairs = new ArrayList<ArrayList<Rectangle>>();
+        
+        //initialize iterator for outer loop
+        Iterator<Rectangle> outerIter = new Iterator<Rectangle>(bst.getRootNode());
+        int outerNodePos = 0;
+        
+        // outerIter iterates through all the nodes in bst
+        while (outerIter.hasNext())
+        {
+            //progress iterator for outer loop
+            BSTNode<Rectangle> outerNode = outerIter.next();
+            Rectangle outerRectangle = outerNode.getElement();
+            outerNodePos++;
+            
+            Iterator<Rectangle> innerIter = new Iterator<Rectangle>(bst.getRootNode());
+            
+            // bring the innerIter to same position as outerIter
+            // to avoid duplicate pairs of rectangles
+            for (int i = 0; i < outerNodePos; i++)
+            {
+                innerIter.next();
+            }
+            
+            // innerIter iterates through all the nodes in bst following outerIter's currentNode
+            while (innerIter.hasNext())
+            {
+                //progress iterator for inner loop
+                BSTNode<Rectangle> innerNode = innerIter.next();
+                Rectangle innerRectangle = innerNode.getElement();
+                
+                if (Rectangle.intersects(outerRectangle, innerRectangle))
+                {
+                    ArrayList<Rectangle> pair = new ArrayList<Rectangle>();
+                    pair.add(outerRectangle);
+                    pair.add(innerRectangle);
+                    
+                    allPairs.add(pair);
+                }
+            }
+        }
+        
+        return allPairs;
     }
 }
 
