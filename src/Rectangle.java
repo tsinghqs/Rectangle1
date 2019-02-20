@@ -25,6 +25,9 @@ public class Rectangle implements Comparable<Rectangle> {
         this.h = h;
     }
     
+    /**
+     * blah
+     */
     public Rectangle() {
         // TODO Auto-generated constructor stub
     }
@@ -99,6 +102,14 @@ public class Rectangle implements Comparable<Rectangle> {
         this.name = name;
     }
     
+    /**
+     * determines if this rectangle intersects the given rectangle
+     * @param x xPos
+     * @param y yPos
+     * @param w width
+     * @param h height
+     * @return true if this rectangle intersects the given rectangle
+     */
     public boolean intersects(int x, int y, int w, int h)
     {
         int firstXMin = this.getX();
@@ -130,8 +141,15 @@ public class Rectangle implements Comparable<Rectangle> {
         return false;
     }
     
+    /**
+     * Determines whether two rectangle objects intersect
+     * @param r1 First rectangle
+     * @param r2 Second rectangle
+     * @return true if r1 and r2 intersect
+     */
     public static boolean intersects(Rectangle r1, Rectangle r2)
     {
+        // edit to use non static intersects
         int firstXMin = r1.getX();
         int firstXMax = r1.getX() + r1.getWidth();
         int secondXMin = r2.getX();
@@ -161,6 +179,10 @@ public class Rectangle implements Comparable<Rectangle> {
         return false;
     }
     
+    /**
+     * returns values of rectangle in string format
+     * @return string representation of rectangle
+     */
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
@@ -180,10 +202,19 @@ public class Rectangle implements Comparable<Rectangle> {
     }
 
     @Override
+    /**
+     * compareTo
+     */
     public int compareTo(Rectangle r) {
         return this.getName().compareTo(r.getName());
     }
     
+    /**
+     * removes any rectangle in bst with name
+     * @param bst bst
+     * @param name name
+     * @return true if removed successfully
+     */
     public static boolean remove(BST<Rectangle> bst, String name)
     {
         ArrayList<Rectangle> sameNames = search(bst, bst.getRootNode(), name);
@@ -195,6 +226,15 @@ public class Rectangle implements Comparable<Rectangle> {
         return true;
     }
     
+    /**
+     * removes any rectangle in bst with x, y, w, h
+     * @param bst bst
+     * @param x x
+     * @param y y
+     * @param w w
+     * @param h h
+     * @return true if removed successfully
+     */
     public static boolean remove(BST<Rectangle> bst, int x, int y, int w, int h)
     {
         Iterator<Rectangle> iter = new Iterator<Rectangle>(bst.getRootNode());
@@ -215,6 +255,13 @@ public class Rectangle implements Comparable<Rectangle> {
         return false;
     }
     
+    /**
+     * searches
+     * @param bst bst   
+     * @param node node
+     * @param name name
+     * @return search result
+     */
     public static ArrayList<Rectangle> search(BST<Rectangle> bst, BSTNode<Rectangle> node, String name)
     {
         Iterator<Rectangle> iter = new Iterator<Rectangle>(node);
@@ -254,6 +301,15 @@ public class Rectangle implements Comparable<Rectangle> {
         return search(bst, compare.getLeftNode(), name);    
     }
     
+    /**
+     * searches region
+     * @param bst bst
+     * @param x x
+     * @param y y
+     * @param w w
+     * @param h h
+     * @return region
+     */
     public static ArrayList<Rectangle> regionsearch(BST<Rectangle> bst, int x, int y, int w, int h)
     {
         ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
@@ -274,6 +330,11 @@ public class Rectangle implements Comparable<Rectangle> {
         return ans;
     }
     
+    /**
+     * intersections
+     * @param bst bst
+     * @return all pairs
+     */
     public static ArrayList<ArrayList<Rectangle>> intersections(BST<Rectangle> bst)
     {
         ArrayList<ArrayList<Rectangle>> allPairs = new ArrayList<ArrayList<Rectangle>>();
