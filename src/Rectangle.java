@@ -156,7 +156,7 @@ public class Rectangle implements Comparable<Rectangle> {
     
     static public ArrayList<Rectangle> search(BST<Rectangle> bst, BSTNode<Rectangle> node, String name)
     {
-        Iterator<Rectangle> iter = bst.getIterator();
+        Iterator<Rectangle> iter = new Iterator<Rectangle>(node);
         ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
         BSTNode<Rectangle> compare = iter.next();
         

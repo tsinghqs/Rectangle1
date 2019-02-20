@@ -9,6 +9,6 @@ insert b 2 5     123 6
 
 insert c 2 5 123 6
 
-remove 2 5 123 6
+remove 4 3 6 1
 
 dump
