@@ -304,7 +304,7 @@ public class BST<T extends Comparable<? super T>> {
         return false;
     }
     
-    private class Iterator{
+    public class Iterator{
         
         private BSTNode<T> next;
         private Stack<BSTNode<T>> stack = new Stack<BSTNode<T>>();
