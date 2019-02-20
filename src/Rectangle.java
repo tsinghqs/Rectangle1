@@ -122,7 +122,7 @@ public class Rectangle implements Comparable<Rectangle> {
         return this.getName().compareTo(r.getName());
     }
     
-    public boolean remove(BST<Rectangle> bst, String name)
+    public static boolean remove(BST<Rectangle> bst, String name)
     {
         ArrayList<Rectangle> sameNames = search(bst, bst.getRootNode(), name);
         if (sameNames.size() == 0)

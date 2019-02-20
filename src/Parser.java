@@ -77,10 +77,10 @@ public class Parser {
                 Rectangle.remove(parseBoy, Integer.parseInt(commands[1]), Integer.parseInt(commands[2]), Integer.parseInt(commands[3]),Integer.parseInt(commands[4]));
  
             }
-            /**else if (commands[0].equals("remove"))
+            else if (commands[0].equals("remove"))
             {
-                parseBoy.remove(commands[1]);
-            }**/
+                Rectangle.remove(parseBoy, commands[1]);
+            }
             
         }
         
