@@ -119,12 +119,12 @@ public class RectangleTarun implements Comparable<Rectangle> {
         return sb.toString();
     }
     
-    @SuppressWarnings("unchecked")
-    public ArrayList<Rectangle> search(BSTNode<Rectangle> rootNode, String name)
+    
+    public ArrayList<Rectangle> search(BST<Rectangle> bst, BSTNode<Rectangle> node, String name)
     {
-        Iterator iter = rootNode.getIterator();
+        Iterator<Rectangle> iter = bst.getIterator();
         ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
-        BSTNode<Rectangle> compare = (BSTNode<Rectangle>)iter.next();
+        BSTNode<Rectangle> compare = iter.next();
         
         if (compare == null)
         {
@@ -148,7 +148,7 @@ public class RectangleTarun implements Comparable<Rectangle> {
             {
                 return ans;
             }
-            return search(compare.getRightNode(), name);
+            return search(bst, compare.getRightNode(), name);
         }
         
         if (compare.getLeftNode() == null)
@@ -156,7 +156,7 @@ public class RectangleTarun implements Comparable<Rectangle> {
             return ans;
         }
         
-        return search(compare.getLeftNode(), name);
+        return search(bst, compare.getLeftNode(), name);
         
     }
     

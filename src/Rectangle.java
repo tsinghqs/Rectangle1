@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Rectangle implements Comparable<Rectangle> {
 
@@ -150,6 +151,46 @@ public class Rectangle implements Comparable<Rectangle> {
             }
         }
         return false;
+    }
+    
+    public ArrayList<Rectangle> search(BST<Rectangle> bst, BSTNode<Rectangle> node, String name)
+    {
+        Iterator<Rectangle> iter = bst.getIterator();
+        ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
+        BSTNode<Rectangle> compare = iter.next();
+        
+        if (compare == null)
+        {
+            return ans;
+        }
+        
+        if (compare.getElement().getName().equals(name))
+        {
+            ans.add(compare.getElement());
+            while (compare.getRightNode() != null && compare.getRightNode().getElement().getName().equals(name))
+            {
+                compare = compare.getRightNode();
+                ans.add(compare.getElement());
+            }
+            return ans;
+        }
+        
+        if (compare.getElement().getName().compareTo(name) < 0)
+        {
+            if (compare.getRightNode() == null)
+            {
+                return ans;
+            }
+            return search(bst, compare.getRightNode(), name);
+        }
+        
+        if (compare.getLeftNode() == null)
+        {
+            return ans;
+        }
+        
+        return search(bst, compare.getLeftNode(), name);
+        
     }
 }
 
