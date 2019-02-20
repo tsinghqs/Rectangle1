@@ -107,6 +107,17 @@ public class Parser {
                 }
             }
             
+            else if (commands[0].equals("intersections"))
+            {
+                System.out.println("Intersection pairs: ");
+                ArrayList<ArrayList<Rectangle>> allPairs = Rectangle.intersections(parseBoy);
+                for (int i = 0; i < allPairs.size(); i++)
+                {
+                    ArrayList<Rectangle> currPair = allPairs.get(i);
+                    System.out.println(currPair.get(0) + ":" + currPair.get(1));
+                }
+            }
+            
         }
         
         
