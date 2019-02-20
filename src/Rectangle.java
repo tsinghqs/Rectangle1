@@ -122,18 +122,18 @@ public class Rectangle implements Comparable<Rectangle> {
         return this.getName().compareTo(r.getName());
     }
     
-    //public boolean remove(BST<Rectangle> bst, String name)
-    //{
-      //  ArrayList<Rectangle> sameNames = search(rootNode, name);
-        //if (sameNames.size() == 0)
-        //{
-          //  return false;
-        //}
-        //remove((T)sameNames.get(0));
-        //return true;
-    //}
+    public boolean remove(BST<Rectangle> bst, String name)
+    {
+        ArrayList<Rectangle> sameNames = search(bst, bst.getRootNode(), name);
+        if (sameNames.size() == 0)
+        {
+            return false;
+        }
+        bst.remove(sameNames.get(0));
+        return true;
+    }
     
-    static public boolean remove(BST<Rectangle> bst, int x, int y, int w, int h)
+    public static boolean remove(BST<Rectangle> bst, int x, int y, int w, int h)
     {
         Iterator<Rectangle> iter = new Iterator<Rectangle>(bst.getRootNode());
         while (iter.hasNext())
@@ -154,7 +154,7 @@ public class Rectangle implements Comparable<Rectangle> {
         return false;
     }
     
-    static public ArrayList<Rectangle> search(BST<Rectangle> bst, BSTNode<Rectangle> node, String name)
+    public static ArrayList<Rectangle> search(BST<Rectangle> bst, BSTNode<Rectangle> node, String name)
     {
         Iterator<Rectangle> iter = new Iterator<Rectangle>(node);
         ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
