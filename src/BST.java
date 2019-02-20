@@ -1,35 +1,66 @@
-
+/**
+ * BST Class
+ * @author tsingh
+ *
+ * @param <T> Generic
+ */
 public class BST<T extends Comparable<? super T>> {
     
+    /**
+     * Fields for tree
+     */
     BSTNode<T> rootNode;
     Iterator<T> iterator;
     
+    /**
+     * BST Constructor
+     */
     public BST()
     {
         rootNode = null;
         iterator = new Iterator<T>(rootNode);
     }
     
+    /**
+     * BSTNode root return
+     * @return BSTNode<T> the bst node
+     */
     public BSTNode<T> getRootNode()
     {
         return rootNode;
     }
     
+    /**
+     * Iterator return 
+     * @return Iterator<T> the iterator
+     */
     public Iterator<T> getIterator()
     {
         return iterator;
     }
     
+    /**
+     * Method to insert element
+     * @param newElem element to be inserted
+     */
     public void insert(T newElem)
     {
         rootNode = insert(newElem, rootNode);
     }
     
+    /**
+     * Method to remove element
+     * @param targetElem target element to remove
+     */
     public void remove(T targetElem)
     {
         rootNode = remove(targetElem, rootNode);
     }
     
+    /**
+     * Dump method
+     * @return String with tree dump
+     */
     public String dump()
     {
         StringBuilder dump = new StringBuilder();
@@ -41,6 +72,11 @@ public class BST<T extends Comparable<? super T>> {
     }
     
     // precondition: node exists in BST (not null)
+    /**
+     * Method to dump tree
+     * @param node starting node
+     * @return String with tree dump
+     */
     private String treeDump(BSTNode<T> node)
     {
         StringBuilder dump = new StringBuilder();
@@ -69,6 +105,11 @@ public class BST<T extends Comparable<? super T>> {
         return dump.toString();
     }
     
+    /**
+     * Method to get depth
+     * @param targetNode target Node
+     * @return int Depth
+     */
     private int findDepth(BSTNode<T> targetNode)
     {
         if (targetNode == null)
@@ -79,6 +120,12 @@ public class BST<T extends Comparable<? super T>> {
     }
     
     // helper method for findDepth
+    /**
+     * Helpter method for findDepth
+     * @param currNode current Node
+     * @param targetNode target Node
+     * @return int depth
+     */
     private int findDepth(BSTNode<T> currNode, BSTNode<T> targetNode)
     {
         if (currNode.equals(targetNode))
@@ -97,6 +144,10 @@ public class BST<T extends Comparable<? super T>> {
         }
     }
     
+    /**
+     * method to get size
+     * @return int size
+     */
     private int size()
     {
         if (rootNode == null)
@@ -108,6 +159,12 @@ public class BST<T extends Comparable<? super T>> {
     }
     
     // helper method for insert
+    /**
+     * Method to insert
+     * @param newElem the new element
+     * @param node the node
+     * @return BSTNode<T> the bst node
+     */
     private BSTNode<T> insert(T newElem, BSTNode<T> node)
     {
         if (node == null)
@@ -130,6 +187,12 @@ public class BST<T extends Comparable<? super T>> {
     }
     
     // helper method for remove
+    /**
+     * Helper method
+     * @param targetElem the target element
+     * @param node targt node
+     * @return BSTNode<T> to remove
+     */
     private BSTNode<T> remove(T targetElem, BSTNode<T> node)
     {
         // This local variable will contain the new root of the subtree,
@@ -187,7 +250,7 @@ public class BST<T extends Comparable<? super T>> {
     }
     
     /**
-     * 
+     * Method to get minimum of subtree
      * @param node the node that roots the tree
      * @return the leftmost node
      */

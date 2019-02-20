@@ -16,7 +16,6 @@ public class Rectangle1 {
      * @param args a string value to run the project
      * @throws FileNotFoundException 
      */
-
     public static void main(String[] args) throws FileNotFoundException
     {
        //read file as an argument
