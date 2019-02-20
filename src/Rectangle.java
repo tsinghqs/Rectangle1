@@ -133,16 +133,12 @@ public class Rectangle implements Comparable<Rectangle> {
         //return true;
     //}
     
-    public static boolean remove(BST<Rectangle> bst, int x, int y, int w, int h)
+    static public boolean remove(BST<Rectangle> bst, int x, int y, int w, int h)
     {
-        if (bst.getRootNode() == null)
-        {
-            return false;
-        }
         Iterator<Rectangle> iter = new Iterator<Rectangle>(bst.getRootNode());
         while (iter.hasNext())
         {
-            BSTNode<Rectangle> currNode = iter.next();
+            BSTNode<Rectangle> currNode = (BSTNode<Rectangle>) iter.next();
             Rectangle currRectangle = currNode.getElement();
             boolean sameX = (currRectangle.getX() == x);
             boolean sameY = (currRectangle.getY() == y);
@@ -157,8 +153,7 @@ public class Rectangle implements Comparable<Rectangle> {
         return false;
     }
     
-    
-    public static ArrayList<Rectangle> search(BST<Rectangle> bst, BSTNode<Rectangle> node, String name)
+    static public ArrayList<Rectangle> search(BST<Rectangle> bst, BSTNode<Rectangle> node, String name)
     {
         Iterator<Rectangle> iter = bst.getIterator();
         ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
