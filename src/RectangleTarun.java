@@ -119,6 +119,37 @@ public class RectangleTarun implements Comparable<Rectangle> {
         return sb.toString();
     }
     
+    public boolean recIntersect(int x, int y, int w, int h)
+    {
+        int firstXMin = this.getX();
+        int firstXMax = this.getX() + this.getWidth();
+        int secondXMin = x;
+        int secondXMax = x + w;
+        boolean xIntersect = false;
+        
+        if (firstXMin <= secondXMax && secondXMin <= firstXMax)
+        {
+            xIntersect = true;
+        }
+        
+        int firstYMin = this.getY();
+        int firstYMax = this.getY() + this.getHeight();
+        int secondYMin = x;
+        int secondYMax = x + w;
+        boolean yIntersect = false;
+        
+        if (firstYMin <= secondYMax && secondYMin <= firstYMax)
+        {
+            yIntersect = true;
+        }
+        
+        if (xIntersect && yIntersect)
+        {
+            return true;
+        }
+        return false;
+    }
+    
     
     public ArrayList<Rectangle> search(BST<Rectangle> bst, BSTNode<Rectangle> node, String name)
     {
