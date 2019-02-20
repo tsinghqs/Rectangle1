@@ -1,15 +1,13 @@
-import java.util.ArrayList;
-import java.util.Stack;
 
 public class BST<T extends Comparable<? super T>> {
     
     BSTNode<T> rootNode;
-    Iterator iterator;
+    Iterator<T> iterator;
     
     public BST()
     {
         rootNode = null;
-        iterator = new Iterator(rootNode);
+        iterator = new Iterator<T>(rootNode);
     }
     
     public BSTNode<T> getRootNode()
@@ -17,7 +15,7 @@ public class BST<T extends Comparable<? super T>> {
         return rootNode;
     }
     
-    public Iterator getIterator()
+    public Iterator<T> getIterator()
     {
         return iterator;
     }
@@ -232,120 +230,4 @@ public class BST<T extends Comparable<? super T>> {
         //Recursive Case 3: current node has 2 children
     }
     
-    @SuppressWarnings("unchecked")
-    public ArrayList<Rectangle> search(BSTNode<T> rootNode, String name)
-    {
-        Iterator iter = new Iterator(rootNode);
-        ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
-        BSTNode<Rectangle> compare = (BSTNode<Rectangle>)iter.next();
-        
-        if (compare == null)
-        {
-            return ans;
-        }
-        
-        if (compare.getElement().getName().equals(name))
-        {
-            ans.add(compare.getElement());
-            while (compare.getRightNode() != null && compare.getRightNode().getElement().getName().equals(name))
-            {
-                compare = compare.getRightNode();
-                ans.add(compare.getElement());
-            }
-            return ans;
-        }
-        
-        if (compare.getElement().getName().compareTo(name) < 0)
-        {
-            if (compare.getRightNode() == null)
-            {
-                return ans;
-            }
-            return search((BSTNode<T>)compare.getRightNode(), name);
-        }
-        
-        if (compare.getLeftNode() == null)
-        {
-            return ans;
-        }
-        
-        return search((BSTNode<T>)compare.getLeftNode(), name);
-        
-    }
-    
-    public boolean remove(String name)
-    {
-        ArrayList<Rectangle> sameNames = search(rootNode, name);
-        if (sameNames.size() == 0)
-        {
-            return false;
-        }
-        remove((T)sameNames.get(0));
-        return true;
-    }
-    
-    public boolean remove(int x, int y, int w, int h)
-    {
-        Iterator iter = new Iterator(rootNode);
-        while (iter.hasNext())
-        {
-            BSTNode<Rectangle> currNode = (BSTNode<Rectangle>) iter.next();
-            Rectangle currRectangle = currNode.getElement();
-            boolean sameX = (currRectangle.getX() == x);
-            boolean sameY = (currRectangle.getY() == y);
-            boolean sameW = (currRectangle.getWidth() == w);
-            boolean sameH = (currRectangle.getHeight() == h);
-            if (sameX && sameY && sameW && sameH)
-            {
-                remove((T)currRectangle);
-                return true;
-            }
-        }
-        return false;
-    }
-    
-    public class Iterator{
-        
-        private BSTNode<T> next;
-        private Stack<BSTNode<T>> stack = new Stack<BSTNode<T>>();
-
-        
-        public Iterator(BSTNode<T> root) {
-            if (root == null)
-            {
-                return;
-            }
-            next = root;
-            if (next == null)
-            {
-                return;
-            }
-            stack.push(next);
-            while (next.getLeftNode() != null)
-            {
-                stack.push(next.getLeftNode());
-                next = next.getLeftNode();
-            }
-        }
-        
-        public boolean hasNext() {
-            return !stack.isEmpty();
-        }
-        
-        public BSTNode<T> next() {
-            BSTNode<T> rst = stack.pop();
-            
-            if (rst.getRightNode() != null) {
-                BSTNode<T> node = rst.getRightNode();
-                stack.push(node);
-                while (node.getLeftNode() != null) {
-                    stack.push(node.getLeftNode());
-                    node = node.getLeftNode();
-                }            
-            }
-            return rst;
-            
-            
-        }
-    }
 }

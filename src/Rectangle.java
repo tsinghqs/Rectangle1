@@ -121,6 +121,35 @@ public class Rectangle implements Comparable<Rectangle> {
         return this.getName().compareTo(r.getName());
     }
     
+    //public boolean remove(BST<Rectangle> bst, String name)
+    //{
+      //  ArrayList<Rectangle> sameNames = search(rootNode, name);
+        //if (sameNames.size() == 0)
+        //{
+          //  return false;
+        //}
+        //remove((T)sameNames.get(0));
+        //return true;
+    //}
     
+    public boolean remove(BST<Rectangle> bst, int x, int y, int w, int h)
+    {
+        Iterator<Rectangle> iter = new Iterator<Rectangle>(bst.getRootNode());
+        while (iter.hasNext())
+        {
+            BSTNode<Rectangle> currNode = (BSTNode<Rectangle>) iter.next();
+            Rectangle currRectangle = currNode.getElement();
+            boolean sameX = (currRectangle.getX() == x);
+            boolean sameY = (currRectangle.getY() == y);
+            boolean sameW = (currRectangle.getWidth() == w);
+            boolean sameH = (currRectangle.getHeight() == h);
+            if (sameX && sameY && sameW && sameH)
+            {
+                bst.remove(currRectangle);
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
