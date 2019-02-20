@@ -9,6 +9,10 @@ insert b 50 50     123 6
 
 insert c 10 10 5 5
 
-regionsearch 11 11 1 1
+search b
 
-dump
+search d
+
+regionsearch 1 1 80 80
+
+dum

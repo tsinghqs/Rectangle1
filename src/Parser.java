@@ -34,7 +34,6 @@ public class Parser {
         if (commands.length > 0)
         {
             
-            System.out.println(commands[0]);
             if (commands[0].equals("insert"))
             {
                 //Make sure height and width are greater than 0
@@ -50,22 +49,31 @@ public class Parser {
                 {
                     
                     parseBoy.insert(rec);
-                    System.out.println("Rectangle accepted:(" + rec.getName() + ", " +
+                    System.out.println("Rectangle accepted: (" + rec.getName() + ", " +
                     rec.getX() + ", " + rec.getY() + ", " + rec.getWidth() + ", " + rec.getHeight()+ ")");
                     
                     
                 }
                 else
                 {
-                    System.out.println("REJECTED");
+                    System.out.println("Rectangle rejected: (" + rec.getName() + ", " + 
+                        rec.getX() + ", " + rec.getY() + ", " + rec.getWidth() + ", " + rec.getHeight()+ ")");
                 }
             }
             else if (commands[0].equals("search")) {
                 ArrayList<Rectangle> ans = Rectangle.search(parseBoy, parseBoy.getRootNode(), commands[1]);
-                for (int i = 0; i < ans.size(); i++)
+                if (ans.size() > 0)
                 {
-                    System.out.println(ans);
+                    for (int i = 0; i < ans.size(); i++)
+                    {
+                        System.out.println("Rectangle found: " + ans.get(i));
+                    }
                 }
+                else
+                {
+                    System.out.println("Rectangle not found: "+ commands[1]);
+                }
+                
             }
             else if (commands[0].equals("dump"))
             {
@@ -74,17 +82,29 @@ public class Parser {
             }
             else if (commands[0].equals("remove") && commands.length > 4)
             {
-                Rectangle.remove(parseBoy, Integer.parseInt(commands[1]), Integer.parseInt(commands[2]), Integer.parseInt(commands[3]),Integer.parseInt(commands[4]));
+                if (!Rectangle.remove(parseBoy, Integer.parseInt(commands[1]), Integer.parseInt(commands[2]), Integer.parseInt(commands[3]),Integer.parseInt(commands[4])))
+                {
+                    System.out.println("Rectangle rejected (" + Integer.parseInt(commands[1]) + "," + Integer.parseInt(commands[2]) + "," + Integer.parseInt(commands[3]) + "," + 
+                        Integer.parseInt(commands[4]) + ")");
+                }
  
             }
             else if (commands[0].equals("remove"))
             {
-                Rectangle.remove(parseBoy, commands[1]);
+                if (!Rectangle.remove(parseBoy, commands[1]))
+                {
+                    System.out.println("Rectangle rejected "+ commands[1]);
+                }
             }
             else if (commands[0].equals("regionsearch"))
             {
                 ArrayList<Rectangle> reg = Rectangle.regionsearch(parseBoy, Integer.parseInt(commands[1]), Integer.parseInt(commands[2]), Integer.parseInt(commands[3]),Integer.parseInt(commands[4]));
-                System.out.println(reg);
+                System.out.println("Rectangles intersecting region (" + Integer.parseInt(commands[1]) + "," + Integer.parseInt(commands[2]) + "," + Integer.parseInt(commands[3]) + "," + 
+                    Integer.parseInt(commands[4]) + ")");
+                for (int i = 0; i < reg.size(); i++)
+                {
+                    System.out.println(reg.get(i));
+                }
             }
             
         }
