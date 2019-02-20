@@ -138,7 +138,7 @@ public class Rectangle implements Comparable<Rectangle> {
         Iterator<Rectangle> iter = new Iterator<Rectangle>(bst.getRootNode());
         while (iter.hasNext())
         {
-            BSTNode<Rectangle> currNode = (BSTNode<Rectangle>) iter.next();
+            BSTNode<Rectangle> currNode = iter.next();
             Rectangle currRectangle = currNode.getElement();
             boolean sameX = (currRectangle.getX() == x);
             boolean sameY = (currRectangle.getY() == y);
@@ -146,6 +146,7 @@ public class Rectangle implements Comparable<Rectangle> {
             boolean sameH = (currRectangle.getHeight() == h);
             if (sameX && sameY && sameW && sameH)
             {
+                System.out.println(currRectangle.toString());
                 bst.remove(currRectangle);
                 return true;
             }
