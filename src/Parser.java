@@ -52,11 +52,7 @@ public class Parser {
                     parseBoy.insert(rec);
                     System.out.println("Rectangle accepted:(" + rec.getName() + ", " +
                     rec.getX() + ", " + rec.getY() + ", " + rec.getWidth() + ", " + rec.getHeight()+ ")");
-                    ArrayList<Rectangle> ans = parseBoy.Search(parseBoy.getRootNode(), rec.getName());
-                    for (int i = 0; i < ans.size(); i++)
-                    {
-                        System.out.println(ans);
-                    }
+                    
                     
                 }
                 else
@@ -64,14 +60,26 @@ public class Parser {
                     System.out.println("REJECTED");
                 }
             }
+            else if (commands[0].equals("search")) {
+                ArrayList<Rectangle> ans = parseBoy.search(parseBoy.getRootNode(), commands[1]);
+                for (int i = 0; i < ans.size(); i++)
+                {
+                    System.out.println(ans);
+                }
+            }
             else if (commands[0].equals("dump"))
             {
                 String dump = parseBoy.dump();
                 System.out.println(dump);
             }
-            else if (commands[0].equals("remove") && commands.length > 1)
+            else if (commands[0].equals("remove") && commands.length > 4)
             {
-                System.out.print("Don't");
+                parseBoy.remove(Integer.parseInt(commands[1]), Integer.parseInt(commands[2]), Integer.parseInt(commands[3]),Integer.parseInt(commands[4]));
+ 
+            }
+            else if (commands[0].equals("remove"))
+            {
+                parseBoy.remove(commands[1]);
             }
             
         }

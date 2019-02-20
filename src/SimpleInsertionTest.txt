@@ -4,8 +4,11 @@ insert a 1 0 2 4
 
 	insert b 4 3 6 1
 
-insert c 2 5     123 6
+insert b 2 5     123 6
 
-insert c 2 5     123 6
+
+insert c 2 5 123 6
+
+remove 2 5 123 6
 
 dump
