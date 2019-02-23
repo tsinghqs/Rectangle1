@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 /**
  * Parser is a class designed to parse command file
- * @author tsingh
- *
+ * @author tsinghqs
+ * @version 2019
  */
 public class Parser {
     

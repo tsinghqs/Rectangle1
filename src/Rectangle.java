@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 /**
  * Rectangle class to store rectangle data parsed from command file.
- * @author Vikramaditya
- *
+ * @author vpratha
+ * @version 2019
  */
 public class Rectangle implements Comparable<Rectangle> {
 
@@ -12,6 +12,18 @@ public class Rectangle implements Comparable<Rectangle> {
     private int y;
     private int w;
     private int h;
+    
+    /**
+     * Default constructor for rectangle class
+     */
+    public Rectangle()
+    {
+        this.name = "";
+        this.x = 0;
+        this.y = 0;
+        this.w = 0;
+        this.h = 0;
+    }
     
     /**
      * Constructor for the rectangle class
@@ -28,13 +40,6 @@ public class Rectangle implements Comparable<Rectangle> {
         this.y = y;
         this.w = w;
         this.h = h;
-    }
-    
-    /**
-     * empty constructor
-     */
-    public Rectangle() {
-        
     }
 
     /**
