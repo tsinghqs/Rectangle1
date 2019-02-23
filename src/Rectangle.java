@@ -1,5 +1,10 @@
 import java.util.ArrayList;
 
+/**
+ * Rectangle class to store rectangle data parsed from command file.
+ * @author Vikramaditya
+ *
+ */
 public class Rectangle implements Comparable<Rectangle> {
 
     private String name;
@@ -10,11 +15,11 @@ public class Rectangle implements Comparable<Rectangle> {
     
     /**
      * Constructor for the rectangle class
-     * @param name
-     * @param x
-     * @param y
-     * @param w
-     * @param h
+     * @param name name of rectangle
+     * @param x x coordinate of rectangle
+     * @param y y coordinate of rectangle
+     * @param w width of rectangle
+     * @param h height of rectangle
      */
     public Rectangle(String name, int x, int y, int w, int h)
     {
@@ -26,10 +31,10 @@ public class Rectangle implements Comparable<Rectangle> {
     }
     
     /**
-     * blah
+     * empty constructor
      */
     public Rectangle() {
-        // TODO Auto-generated constructor stub
+        
     }
 
     /**
@@ -104,18 +109,18 @@ public class Rectangle implements Comparable<Rectangle> {
     
     /**
      * determines if this rectangle intersects the given rectangle
-     * @param x xPos
-     * @param y yPos
-     * @param w width
-     * @param h height
+     * @param xPos xPos
+     * @param yPos yPos
+     * @param width width
+     * @param height height
      * @return true if this rectangle intersects the given rectangle
      */
-    public boolean intersects(int x, int y, int w, int h)
+    public boolean intersects(int xPos, int yPos, int width, int height)
     {
         int firstXMin = this.getX();
         int firstXMax = this.getX() + this.getWidth();
-        int secondXMin = x;
-        int secondXMax = x + w;
+        int secondXMin = xPos;
+        int secondXMax = xPos + width;
         boolean xIntersect = false;
         
         if (firstXMin < secondXMax && secondXMin < firstXMax)
@@ -125,8 +130,8 @@ public class Rectangle implements Comparable<Rectangle> {
         
         int firstYMin = this.getY();
         int firstYMax = this.getY() + this.getHeight();
-        int secondYMin = y;
-        int secondYMax = y + h;
+        int secondYMin = yPos;
+        int secondYMax = yPos + height;
         boolean yIntersect = false;
         
         if (firstYMin < secondYMax && secondYMin < firstYMax)
@@ -134,11 +139,7 @@ public class Rectangle implements Comparable<Rectangle> {
             yIntersect = true;
         }
         
-        if (xIntersect && yIntersect)
-        {
-            return true;
-        }
-        return false;
+        return xIntersect && yIntersect;
     }
     
     /**
@@ -172,11 +173,7 @@ public class Rectangle implements Comparable<Rectangle> {
             yIntersect = true;
         }
         
-        if (xIntersect && yIntersect)
-        {
-            return true;
-        }
-        return false;
+        return xIntersect && yIntersect;
     }
     
     /**
@@ -262,7 +259,8 @@ public class Rectangle implements Comparable<Rectangle> {
      * @param name name
      * @return search result
      */
-    public static ArrayList<Rectangle> search(BST<Rectangle> bst, BSTNode<Rectangle> node, String name)
+    public static ArrayList<Rectangle> search(BST<Rectangle> bst, 
+        BSTNode<Rectangle> node, String name)
     {
         Iterator<Rectangle> iter = new Iterator<Rectangle>(node);
         ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
@@ -276,7 +274,8 @@ public class Rectangle implements Comparable<Rectangle> {
         if (compare.getElement().getName().equals(name))
         {
             ans.add(compare.getElement());
-            while (compare.getRightNode() != null && compare.getRightNode().getElement().getName().equals(name))
+            while (compare.getRightNode() != null && 
+                compare.getRightNode().getElement().getName().equals(name))
             {
                 compare = compare.getRightNode();
                 ans.add(compare.getElement());
@@ -310,7 +309,8 @@ public class Rectangle implements Comparable<Rectangle> {
      * @param h h
      * @return region
      */
-    public static ArrayList<Rectangle> regionsearch(BST<Rectangle> bst, int x, int y, int w, int h)
+    public static ArrayList<Rectangle> regionsearch(BST<Rectangle> bst, int x, 
+        int y, int w, int h)
     {
         ArrayList<Rectangle> ans = new ArrayList<Rectangle>();
         if (w < 0 && h < 0)
@@ -335,12 +335,15 @@ public class Rectangle implements Comparable<Rectangle> {
      * @param bst bst
      * @return all pairs
      */
-    public static ArrayList<ArrayList<Rectangle>> intersections(BST<Rectangle> bst)
+    public static 
+        ArrayList<ArrayList<Rectangle>> intersections(BST<Rectangle> bst)
     {
-        ArrayList<ArrayList<Rectangle>> allPairs = new ArrayList<ArrayList<Rectangle>>();
+        ArrayList<ArrayList<Rectangle>> allPairs = 
+            new ArrayList<ArrayList<Rectangle>>();
         
         //initialize iterator for outer loop
-        Iterator<Rectangle> outerIter = new Iterator<Rectangle>(bst.getRootNode());
+        Iterator<Rectangle> outerIter = 
+            new Iterator<Rectangle>(bst.getRootNode());
         int outerNodePos = 0;
         
         // outerIter iterates through all the nodes in bst
@@ -351,7 +354,8 @@ public class Rectangle implements Comparable<Rectangle> {
             Rectangle outerRectangle = outerNode.getElement();
             outerNodePos++;
             
-            Iterator<Rectangle> innerIter = new Iterator<Rectangle>(bst.getRootNode());
+            Iterator<Rectangle> innerIter = 
+                new Iterator<Rectangle>(bst.getRootNode());
             
             // bring the innerIter to same position as outerIter
             // to avoid duplicate pairs of rectangles
@@ -360,7 +364,8 @@ public class Rectangle implements Comparable<Rectangle> {
                 innerIter.next();
             }
             
-            // innerIter iterates through all the nodes in bst following outerIter's currentNode
+            // innerIter iterates through all the nodes in 
+            //bst following outerIter's currentNode
             while (innerIter.hasNext())
             {
                 //progress iterator for inner loop
