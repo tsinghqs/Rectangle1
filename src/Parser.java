@@ -89,11 +89,14 @@ public class Parser
             else if (commands[0].equals("remove") && commands.length > 4)
             {
                 if (!Rectangle.remove(parseBoy, Integer.parseInt(commands[1]), 
-                    Integer.parseInt(commands[2]), Integer.parseInt(commands[3]), 
+                    Integer.parseInt(commands[2]), 
+                    Integer.parseInt(commands[3]), 
                     Integer.parseInt(commands[4])))
                 {
-                    System.out.println("Rectangle rejected (" + 
-                        Integer.parseInt(commands[1]) + "," + Integer.parseInt(commands[2]) 
+                    System.out.println("Rectangle rejected "
+                        + "(" + 
+                        Integer.parseInt(commands[1]) + "," + 
+                        Integer.parseInt(commands[2]) 
                         + "," + Integer.parseInt(commands[3]) + "," + 
                         Integer.parseInt(commands[4]) + ")");
                 }
@@ -109,8 +112,10 @@ public class Parser
             else if (commands[0].equals("regionsearch"))
             {
                 ArrayList<Rectangle> reg = Rectangle.regionsearch(parseBoy, 
-                    Integer.parseInt(commands[1]), Integer.parseInt(commands[2]), 
-                    Integer.parseInt(commands[3]), Integer.parseInt(commands[4]));
+                    Integer.parseInt(commands[1]), 
+                    Integer.parseInt(commands[2]), 
+                    Integer.parseInt(commands[3]), 
+                    Integer.parseInt(commands[4]));
                 System.out.println("Rectangles intersecting region (" + 
                     Integer.parseInt(commands[1]) 
                     + "," + Integer.parseInt(commands[2]) + "," + 
@@ -125,8 +130,8 @@ public class Parser
             else if (commands[0].equals("Intersections"))
             {
                 System.out.println("Intersection pairs: ");
-                ArrayList<ArrayList<Rectangle>> allPairs = Rectangle.intersections(
-                    parseBoy);
+                ArrayList<ArrayList<Rectangle>> allPairs = 
+                    Rectangle.intersections(parseBoy);
                 for (int i = 0; i < allPairs.size(); i++)
                 {
                     ArrayList<Rectangle> currPair = allPairs.get(i);
