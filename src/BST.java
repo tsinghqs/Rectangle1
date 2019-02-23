@@ -148,7 +148,7 @@ public class BST<T extends Comparable<? super T>> {
      * method to get size
      * @return int size
      */
-    private int size()
+    public int size()
     {
         if (rootNode == null)
         {

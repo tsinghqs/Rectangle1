@@ -13,7 +13,7 @@ public class BSTTest extends TestCase {
     }
 
     /**
-     *  Tests insert()
+     *  Tests getRootNode()
      */
     public void testGetRootNode() 
     {
@@ -21,7 +21,7 @@ public class BSTTest extends TestCase {
     }
 
     /**
-     *  Tests insert()
+     *  Tests getIterator()
      */
     public void testGetIterator() 
     {
@@ -34,9 +34,15 @@ public class BSTTest extends TestCase {
      */
     public void testInsert() 
     {
-        Rectangle r = new Rectangle("hello", 1, 2, 3, 4);
-        bst.insert(r);
+        Rectangle b = new Rectangle("b", 1, 2, 3, 4);
+        bst.insert(b);
         assertEquals(bst.size(), 1);
+        Rectangle a = new Rectangle("a", 1, 2, 3, 4);
+        bst.insert(a);
+        assertEquals(bst.size(), 2);
+        Rectangle c = new Rectangle("c", 1, 2, 3, 4);
+        bst.insert(c);
+        assertEquals(bst.size(), 3);
     }
     
     /**
@@ -44,7 +50,27 @@ public class BSTTest extends TestCase {
      */
     public void testRemove() 
     {     
-  
+        BST<Integer> bstInt = new BST<Integer>();
+        bstInt.insert(1);
+        bstInt.insert(0);
+        bstInt.insert(2);
+        bstInt.remove(1);
+        bstInt = new BST<Integer>();
+        bstInt.insert(1);
+        bstInt.insert(0);
+        bstInt.remove(0);
+        bstInt = new BST<Integer>();
+        bstInt.insert(0);
+        bstInt.insert(1);
+        bstInt.remove(1);
+        bstInt = new BST<Integer>();
+        bstInt.insert(1);
+        bstInt.insert(0);
+        bstInt.remove(1);
+        bstInt = new BST<Integer>();
+        bstInt.insert(0);
+        bstInt.insert(1);
+        bstInt.remove(0);
     }
 
     /**
@@ -52,7 +78,16 @@ public class BSTTest extends TestCase {
      */
     public void testDump() 
     {
-
+        bst.dump();
+        Rectangle b = new Rectangle("b", 1, 2, 3, 4);
+        bst.insert(b);
+        bst.dump();
+        Rectangle a = new Rectangle("a", 1, 2, 3, 4);
+        bst.insert(a);
+        bst.dump();
+        Rectangle c = new Rectangle("c", 1, 2, 3, 4);
+        bst.insert(c);
+        bst.dump();
     }
 
 
