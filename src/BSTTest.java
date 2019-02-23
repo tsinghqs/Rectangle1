@@ -1,6 +1,6 @@
 import student.TestCase;
 
-public class BSTTest {
+public class BSTTest extends TestCase {
     
     private BST<Rectangle> bst;
     
@@ -17,7 +17,7 @@ public class BSTTest {
      */
     public void testGetRootNode() 
     {
-
+        assertNull(bst.getRootNode());
     }
 
     /**
@@ -25,7 +25,8 @@ public class BSTTest {
      */
     public void testGetIterator() 
     {
-
+        bst.getIterator();
+        assertNull(bst.getRootNode());
     }
     
     /**
@@ -33,7 +34,9 @@ public class BSTTest {
      */
     public void testInsert() 
     {
-
+        Rectangle r = new Rectangle("hello", 1, 2, 3, 4);
+        bst.insert(r);
+        assertEquals(bst.size(), 1);
     }
     
     /**
