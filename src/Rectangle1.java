@@ -33,6 +33,5 @@ public class Rectangle1 {
         
        }
        sc.close();
-       
     }
 }

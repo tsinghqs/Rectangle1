@@ -107,7 +107,7 @@ public class Parser {
                 }
             }
             
-            else if (commands[0].equals("intersections"))
+            else if (commands[0].equals("Intersections"))
             {
                 System.out.println("Intersection pairs: ");
                 ArrayList<ArrayList<Rectangle>> allPairs = Rectangle.intersections(parseBoy);
