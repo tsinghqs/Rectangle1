@@ -57,7 +57,7 @@ public class BSTTest extends TestCase {
     {     
         BST<Integer> bstInt = new BST<Integer>();
         bstInt.insert(1);
-        assertEquals(bst.size(), 1);
+        assertEquals(bstInt.size(), 1);
         bstInt.insert(0);
         bstInt.insert(2);
         bstInt.remove(1);
