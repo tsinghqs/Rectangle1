@@ -3,7 +3,7 @@ import java.util.Stack;
 /**
  * Iterator class implemented in BST
  * @author tsingh
- *
+ * @version 2019
  * @param <T> Generic class parameter
  */
 public class Iterator<T> 
@@ -12,7 +12,6 @@ public class Iterator<T>
     /**
      * Fields for Iterator
      */
-    private BSTNode<T> next;
     private Stack<BSTNode<T>> stack = new Stack<BSTNode<T>>();
 
     /**
@@ -21,6 +20,8 @@ public class Iterator<T>
      */
     public Iterator(BSTNode<T> root) 
     {
+        BSTNode<T> next;
+
         if (root == null)
         {
             return;
