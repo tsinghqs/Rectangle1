@@ -1,12 +1,14 @@
-import student.TestCase;
-
-
-public class BSTNodeTest<T> extends student.TestCase{
+/**
+ * Class to test BSTNode
+ * @author tsingh
+ *@version 2019
+ * @param <T>
+ */
+public class BSTNodeTest<T> extends student.TestCase {
     
-    BSTNode<Integer> tester;
-    BSTNode<Integer> left;
-    BSTNode<Integer> right;
-    Rectangle rect;
+    private BSTNode<Integer> tester;
+    private BSTNode<Integer> left;
+    private BSTNode<Integer> right;
     
     /**
      *  Sets up test cases.
@@ -47,6 +49,7 @@ public class BSTNodeTest<T> extends student.TestCase{
         tester.setRightNode(right);
         assertEquals(right, tester.getRightNode());
         String test = tester.toString();
+        assertEquals(test, tester.toString());
     }
     
    
