@@ -3,27 +3,56 @@ import student.TestCase;
 
 public class BSTNodeTest<T> extends student.TestCase{
     
-    BSTNode<T> tester;
-    BSTNode<T> left;
-    BSTNode<T> right;
+    BSTNode<Integer> tester;
+    BSTNode<Integer> left;
+    BSTNode<Integer> right;
     Rectangle rect;
+    
     /**
      *  Sets up test cases.
      */
     public void setUp() 
     {
-        tester = new BSTNode<Rectangle>(rect);
-        left = new BSTNode<T>(null);
-        right = new BSTNode<T>(null);
+        tester = new BSTNode<Integer>(1);
+        left = new BSTNode<Integer>(2);
+        right = new BSTNode<Integer>(3);
     }
 
     /**
      *  Tests insert()
      */
-    public void testGetRootNode() 
+    public void testGetElement() 
     {
-        
+        int elem = tester.getElement();
+        assertEquals(elem, 1);
+        tester.setElement(5);
+        elem = tester.getElement();
+        assertEquals(elem, 5);
     }
+    
+    /**
+     * Method to get left node
+     */
+    public void testGetLeftNode()
+    {
+        tester.setLeftNode(left);
+        assertEquals(left, tester.getLeftNode());
+    }
+    
+    /**
+     * Method to get right node
+     */
+    public void testGetRightNode()
+    {
+        tester.setRightNode(right);
+        assertEquals(right, tester.getRightNode());
+    }
+    
+   
+    
+    
+    
+    
     
     
 
