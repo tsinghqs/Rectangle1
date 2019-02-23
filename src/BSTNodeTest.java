@@ -46,6 +46,7 @@ public class BSTNodeTest<T> extends student.TestCase{
     {
         tester.setRightNode(right);
         assertEquals(right, tester.getRightNode());
+        String test = tester.toString();
     }
     
    
