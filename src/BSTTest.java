@@ -1,5 +1,10 @@
 import student.TestCase;
 
+/**
+ * @version 2019
+ * @author tsingh
+ *Class for BST Testing
+ */
 public class BSTTest extends TestCase {
     
     private BST<Rectangle> bst;
@@ -52,6 +57,7 @@ public class BSTTest extends TestCase {
     {     
         BST<Integer> bstInt = new BST<Integer>();
         bstInt.insert(1);
+        assertEquals(bst.size(), 1);
         bstInt.insert(0);
         bstInt.insert(2);
         bstInt.remove(1);
@@ -80,6 +86,7 @@ public class BSTTest extends TestCase {
     {
         bst.dump();
         Rectangle b = new Rectangle("b", 1, 2, 3, 4);
+        assertEquals(b.getName(), "b");
         bst.insert(b);
         bst.dump();
         Rectangle a = new Rectangle("a", 1, 2, 3, 4);
