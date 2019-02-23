@@ -1,7 +1,7 @@
 /**
  * Class for BSTNode used by BST Tree
  * @author tsingh
- *
+ * @version 2019
  * @param <T> Generic class
  */
 public class BSTNode<T> {
@@ -80,6 +80,7 @@ public class BSTNode<T> {
     
     /**
      * Method to turn node into string
+     * @return return a String
      */
     public String toString()
     {

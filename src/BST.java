@@ -1,7 +1,7 @@
 /**
  * BST Class
  * @author tsingh
- *
+ * @version 2019
  * @param <T> Generic
  */
 public class BST<T extends Comparable<? super T>> {
@@ -9,8 +9,8 @@ public class BST<T extends Comparable<? super T>> {
     /**
      * Fields for tree
      */
-    BSTNode<T> rootNode;
-    Iterator<T> iterator;
+    private BSTNode<T> rootNode;
+    private Iterator<T> iterator;
     
     /**
      * BST Constructor
@@ -177,7 +177,8 @@ public class BST<T extends Comparable<? super T>> {
             node.setLeftNode(insert(newElem, node.getLeftNode()));
         }
         
-        // nodes with greater than or equal to toString() values are inserted to the right 
+        // nodes with greater than or 
+        //equal to toString() values are inserted to the right 
         else
         {
             node.setRightNode(insert(newElem, node.getRightNode()));
