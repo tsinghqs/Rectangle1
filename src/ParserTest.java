@@ -1,10 +1,11 @@
+import student.TestCase;
 /**
  * Class to test BSTNode
  * @author tsingh
  *@version 2019
  * @param <T>
  */
-public class ParserTest extends student.TestCase {
+public class ParserTest extends TestCase {
     
     BST<Rectangle> bst = new BST<Rectangle>();
     BST<Rectangle> bst1 = new BST<Rectangle>();

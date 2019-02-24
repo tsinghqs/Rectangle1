@@ -1,10 +1,11 @@
+import student.TestCase;
 /**
  * Class to test BSTNode
  * @author tsingh
  *@version 2019
  * @param <T>
  */
-public class BSTNodeTest<T> extends student.TestCase {
+public class BSTNodeTest<T> extends TestCase {
     
     private BSTNode<Integer> tester;
     private BSTNode<Integer> left;
