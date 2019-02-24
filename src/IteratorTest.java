@@ -23,6 +23,9 @@ public class IteratorTest<T> extends student.TestCase {
 
     }
     
+    /**
+     * Tests hasNext()
+     */
     public void testHasNext()
     {
         assertTrue(tester.hasNext());
