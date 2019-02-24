@@ -6,14 +6,26 @@
  */
 public class IteratorTest<T> extends student.TestCase {
     
-    private Iterator<BSTNode<Integer>> tester;
+    private Iterator<Integer> tester;
     private BSTNode<Integer> rootNode = new BSTNode<Integer>(5);
+    private BSTNode<Integer> left = new BSTNode<Integer>(2);
+
     
     /**
      *  Sets up test cases.
      */
     public void setUp() 
     {
-        tester = new Iterator<BSTNode<Integer>>(rootNode);
+        tester = new Iterator<Integer>(rootNode);
     }
+    
+    public void testHasNext()
+    {
+        assertTrue(tester.hasNext());
+        rootNode.setLeftNode(left);
+        assertEquals(rootNode, tester.next());
+        
+    }
+    
+    
 }
