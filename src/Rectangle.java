@@ -94,7 +94,7 @@ public class Rectangle implements Comparable<Rectangle> {
     /**
      * @param xPos the value to set x
      */
-    public void setXpos(int xPos) {
+    public void setX(int xPos) {
         this.x = xPos;
     }
 
