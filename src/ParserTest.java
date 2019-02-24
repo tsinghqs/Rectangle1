@@ -2,18 +2,20 @@ import student.TestCase;
 /**
  * Class to test BSTNode
  * @author tsingh
- *@version 2019
+ * @version 2019
  * @param <T>
  */
 public class ParserTest extends TestCase {
     
-    BST<Rectangle> bst = new BST<Rectangle>();
-    BST<Rectangle> bst1 = new BST<Rectangle>();
-
-    String commands = "insert e 11 11 10 10";
-    String commands1 = "insert e 11 11 0 0";
-    Parser parser; 
-    Parser failInsert;
+    /**
+     * Fields for set up.
+     */
+    private BST<Rectangle> bst;
+    private BST<Rectangle> bst1;
+    private String commands;
+    private String commands1;
+    private Parser parser; 
+    private Parser failInsert;
 
     
     /**
@@ -21,6 +23,10 @@ public class ParserTest extends TestCase {
      */
     public void setUp() 
     {
+        bst = new BST<Rectangle>();
+        bst1 = new BST<Rectangle>();
+        commands = "insert e 11 11 10 10";
+        commands1 = "insert e 11 11 0 0";
         parser = new Parser(bst, commands);
         failInsert = new Parser(bst1, commands1);
 
