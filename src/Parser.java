@@ -70,10 +70,8 @@ public class Parser
                     parseBoy.getRootNode(), commands[1]);
                 if (ans.size() > 0)
                 {
-                    for (int i = 0; i < ans.size(); i++)
-                    {
-                        System.out.println("Rectangle found: " + ans.get(i));
-                    }
+                    System.out.println("Rectangle found: " + ans);
+                    
                 }
                 else
                 {
