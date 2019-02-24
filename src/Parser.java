@@ -46,8 +46,14 @@ public class Parser
                 rec.setHeight(Integer.parseInt(commands[5]));
                 boolean heightFits = (rec.getY() + rec.getHeight()) <= 1024;
                 boolean widthFits = (rec.getX() + rec.getWidth()) <= 1024;
-                if (rec.getX() >= 0 && rec.getY() >= 0 && rec.getHeight() > 0 
-                    && rec.getWidth() > 0 && heightFits && widthFits)
+                boolean validRectangleInput = rec.getX() >= 0 
+                    && rec.getY() >= 0 
+                    && rec.getHeight() > 0 
+                    && rec.getWidth() > 0 
+                    && heightFits 
+                    && widthFits
+                    && isValid(rec.getName());
+                if (validRectangleInput)
                 {
                     parseBoy.insert(rec);
                     System.out.println("Rectangle accepted: (" 
@@ -135,13 +141,35 @@ public class Parser
                     ArrayList<Rectangle> currPair = allPairs.get(i);
                     System.out.println(currPair.get(0) + ":" + currPair.get(1));
                 }
-            }
-            
-        }
-        
-        
+            }         
+        }    
     }
     
+    /**
+     * Method that determines whether a rectangle name
+     * contains only letters, digits, and underscores.
+     * @param name The rectangle name
+     * @return true if name contains only valid characters.
+     */
+    private boolean isValid(String name)
+    {
+        char[] chars = name.toCharArray();
+        char firstChar = chars[0];
+        if (!Character.isLetter(firstChar))
+        {
+            return false;
+        }
+        
+        for (char c : chars)
+        {
+            if (!Character.isLetterOrDigit(c) && c != '_')
+            {
+                return false;
+            }
+        }
+        
+        return true;
+    }
     
 
 }
