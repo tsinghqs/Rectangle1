@@ -44,8 +44,8 @@ public class Parser
                 rec.setY(Integer.parseInt(commands[3]));
                 rec.setWidth(Integer.parseInt(commands[4]));
                 rec.setHeight(Integer.parseInt(commands[5]));
-                boolean heightFits = (rec.getY() + rec.getHeight()) < 1024;
-                boolean widthFits = (rec.getX() + rec.getWidth()) < 1024;
+                boolean heightFits = (rec.getY() + rec.getHeight()) <= 1024;
+                boolean widthFits = (rec.getX() + rec.getWidth()) <= 1024;
                 if (rec.getX() >= 0 && rec.getY() >= 0 && rec.getHeight() > 0 
                     && rec.getWidth() > 0 && heightFits && widthFits)
                 {
