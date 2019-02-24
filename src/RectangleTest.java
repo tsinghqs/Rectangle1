@@ -115,4 +115,25 @@ public class RectangleTest extends TestCase
     {
         assertEquals(rect.compareTo(rect2), 0);
     }
+    
+    /**
+     * Tests intersects two rectangles
+     */
+    public void testIntersectsTwoRectangles()
+    {
+        Rectangle r1 = new Rectangle("r1", 0, 0, 3, 3);
+        Rectangle r2 = new Rectangle("r2", 1, 1, 3, 3);
+        Rectangle r3 = new Rectangle("r3", 4, 4, 1, 1);
+        assertTrue(Rectangle.intersects(r1, r2));
+        assertFalse(Rectangle.intersects(r1, r3));
+    }
+    
+    /**
+     * Tests intersects one rectangle data parameter
+     */
+    public void testIntersects()
+    {
+        assertTrue(rect.intersects(1, 2, 3, 4));
+        assertFalse(rect.intersects(10, 10, 10, 10));
+    }
 }
