@@ -7,11 +7,6 @@ insert a 1 0 2 4
 insert b 50 50     123 6
 
 
-insert c 10 10 5 5
-
-insert d 11 11 1 1
-
-insert e 11 11 10 10
 
 search b
 
