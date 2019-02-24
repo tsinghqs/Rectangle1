@@ -3,7 +3,6 @@ import student.TestCase;
  * Class to test BSTNode
  * @author tsingh
  * @version 2019
- * @param <T>
  */
 public class ParserTest extends TestCase {
     
@@ -11,11 +10,11 @@ public class ParserTest extends TestCase {
      * Fields for set up.
      */
     private BST<Rectangle> bst;
-    private BST<Rectangle> bst1;
-    private String commands;
-    private String commands1;
+    //private BST<Rectangle> bst1;
+    //private String commands;
+    //private String commands1;
     private Parser parser; 
-    private Parser failInsert;
+    //private Parser failInsert;
 
     
     /**
@@ -24,11 +23,11 @@ public class ParserTest extends TestCase {
     public void setUp() 
     {
         bst = new BST<Rectangle>();
-        bst1 = new BST<Rectangle>();
-        commands = "insert e 11 11 10 10";
-        commands1 = "insert e 11 11 0 0";
+        //bst1 = new BST<Rectangle>();
+        String commands = "insert e 11 11 10 10";
+        //commands1 = "insert e 11 11 0 0";
         parser = new Parser(bst, commands);
-        failInsert = new Parser(bst1, commands1);
+        //failInsert = new Parser(bst1, commands1);
     }
     
     /**
@@ -38,6 +37,6 @@ public class ParserTest extends TestCase {
     {
         parser.parseString();
         assertFalse(bst.size() < 1);
-        failInsert.parseString();
+        //failInsert.parseString();
     }
 }
