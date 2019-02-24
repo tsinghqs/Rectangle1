@@ -29,7 +29,6 @@ public class ParserTest extends TestCase {
         commands1 = "insert e 11 11 0 0";
         parser = new Parser(bst, commands);
         failInsert = new Parser(bst1, commands1);
-
     }
     
     /**
