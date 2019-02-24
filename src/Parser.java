@@ -40,7 +40,7 @@ public class Parser
                 //Make sure height and width are greater than 0
                 Rectangle rec = new Rectangle();
                 rec.setName(commands[1]);
-                rec.setX(Integer.parseInt(commands[2]));
+                rec.setXpos(Integer.parseInt(commands[2]));
                 rec.setY(Integer.parseInt(commands[3]));
                 rec.setWidth(Integer.parseInt(commands[4]));
                 rec.setHeight(Integer.parseInt(commands[5]));
