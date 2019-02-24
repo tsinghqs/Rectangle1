@@ -10,7 +10,7 @@ public class ParserTest extends TestCase {
      * Fields for set up.
      */
     private BST<Rectangle> bst;
-    private BST<Rectangle> bst1;
+    //private BST<Rectangle> bst1;
     //private String commands;
     private Parser parser; 
     private Parser failInsert;
@@ -22,7 +22,7 @@ public class ParserTest extends TestCase {
     public void setUp() 
     {
         bst = new BST<Rectangle>();
-        bst1 = new BST<Rectangle>();
+        BST<Rectangle> bst1 = new BST<Rectangle>();
         String commands = "insert e 11 11 10 10";
         String commands1 = "remove 11 11 0 0";
         parser = new Parser(bst, commands);
