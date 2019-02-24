@@ -53,7 +53,7 @@ public class RectangleTest extends TestCase
      */
     public void testSetHeight()
     {
-        rect.setWidth(5);
+        rect.setHeight(5);
         assertEquals(rect.getHeight(), 5);
     }
     
